@@ -1,5 +1,4 @@
 import pytest
-from conf import settings
 from requests_flask_adapter import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker

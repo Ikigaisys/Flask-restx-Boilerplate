@@ -6,8 +6,7 @@ user = api.model(
     "user",
     {
         "id": Integer(),
-        "first_name": String(),
-        "last_name": String(),
+        "username": String(),
         "email": String(),
         "created_at": String(),
     },
@@ -16,8 +15,7 @@ user = api.model(
 user_expect = api.model(
     "user_expert",
     {
-        "first_name": String(),
-        "last_name": String(),
+        "username": String(),
         "email": String(),
     },
 )

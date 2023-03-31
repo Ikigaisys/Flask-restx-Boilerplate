@@ -19,8 +19,8 @@ api = Api(
     title="Flask Boilerplate API",
     version="0.1",
     description="Flask Boilerplate APIs",
-    # authorizations=authorizations,
-    # security="Authorization",
+    authorizations=authorizations,
+    security="Authorization",
 )
 
 api.add_namespace(user_api)

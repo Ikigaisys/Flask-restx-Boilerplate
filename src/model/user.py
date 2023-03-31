@@ -1,17 +1,17 @@
 from sqlalchemy.sql.schema import Column
-from sqlalchemy.sql.sqltypes import String
+from sqlalchemy.sql.sqltypes import Integer, String
 
 from model.base import Base, db
 
 from typing import Union
 
 
-class User(Base, db.Model):
+class User(Base):
     __tablename__ = "user"
 
-    first_name = Column(String(128))
-    last_name = Column(String(128))
-    email = Column(String(128), unique=True)
+    id = Column(Integer, primary_key=True)
+    username = Column(String(80), unique=True)
+    email = Column(String(120), unique=True)
 
     @classmethod
     def get_by_email(cls, email: str) -> Union["User", None]:

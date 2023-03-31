@@ -1,12 +1,12 @@
 import logging
 
-from conf import settings
 from flask import Flask
 from flask import current_app as app
 from flask_cors import CORS
 from flask_migrate import Migrate
 
 from api import blueprint
+from conf import settings
 from model.base import db
 
 app = Flask(__name__, static_folder="../static")
@@ -14,7 +14,8 @@ app.app_context().push()
 
 logging.getLogger().setLevel(level=logging.INFO)
 logging.basicConfig(level=logging.INFO)
-app.config["SQLALCHEMY_DATABASE_URI"] = settings.SQLALCHEMY_DATABASE_URI
+
+app.config["SQLALCHEMY_DATABASE_URI"] = settings.sqlalchemy_database_uri
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["CORS_HEADERS"] = "Content-Type"
 

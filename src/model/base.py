@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Dict, Union
+from typing import Union
 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, DateTime, Integer
@@ -30,7 +30,8 @@ class Base(object):
         """
         Insert
 
-        :return: Base
+        Returns:
+            Base
         """
         db.session.add(self)
         db.session.commit()
@@ -40,20 +41,22 @@ class Base(object):
         """
         Delete
 
-        :return: Base
+        Returns:
+            Base
         """
         db.session.delete(self)
         db.session.commit()
         return self
 
     @classmethod
-    def update(cls, id: int, to_update: Dict) -> None:
+    def update(cls, id: int, to_update: dict) -> None:
         """
         Update row by id
 
-        :param id:
-        :param to_update:
-        :return:
+        Args:
+            id: id to update data
+            to_update: dictionary to update data
+            session: Defaults to None.
         """
         db.session.query(cls).filter(cls.id == id).update(to_update)
         db.session.commit()
@@ -61,10 +64,14 @@ class Base(object):
     @classmethod
     def get_by_id(cls, id: int) -> Union[Base, None]:
         """
-        Get object by id
+        Get by id
 
-        :param id:
-        :return:
+        Args:
+            id: fetch row by id
+            session: Defaults to None.
+
+        Returns:
+            Row from database
         """
         row = db.session.query(cls).filter_by(id=id).first()
         return row
@@ -72,8 +79,13 @@ class Base(object):
     @classmethod
     def get(cls) -> Union[Base, None]:
         """
+        Get all rows
 
-        :return:
+        Args:
+            session: Defaults to None.
+
+        Returns:
+            All rows
         """
         rows = db.session.query(cls).all()
         return rows

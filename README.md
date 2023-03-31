@@ -12,26 +12,32 @@ pip install -r etc/requirements.txt
 
 ## Configuration Variables
 
-Configuration variables exist in the file `etc/settings.json`.
+Configuration variables need to be in the file `etc/settings.json`. **Please create this file.**
 Only the database connection key value pair exists right now.
 It can be set to postgres or MySQL.
+#### Example `settings.json`
 ```bash
 {
-    "SQLALCHEMY_DATABASE_URI": "sqlite:///test.db"
+    "env": "dev",
+    "sqlalchemy_database_uri": "sqlite:////absolute/path/to/project/test.db"
 }
 ```
 
 ## Migrations
-To initialize the database, run the following [flask-migrate](https://flask-migrate.readthedocs.io/en/latest/) command
+To initialize the database, run the following [alembic](https://alembic.sqlalchemy.org/en/latest/tutorial.html#running-our-first-migration) command
 
 ```bash
-flask db upgrade
+cd src/model
+alembic upgrade head
+cd ../..
 ```
 ## Run
 
 ```bash
 python3 src/app.py
 ```
+**Open the URL http://127.0.0.1:5000/api/v1/**
+
 
 ## Pytest
 Test cases can be run using the following command
