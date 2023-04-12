@@ -1,5 +1,8 @@
+import logging
 from flask import Blueprint
 from flask_restx import Api
+from http import HTTPStatus
+from werkzeug.exceptions import Unauthorized
 
 from .user.endpoints import api as user_api
 
@@ -24,3 +27,17 @@ api = Api(
 )
 
 api.add_namespace(user_api)
+
+@api.errorhandler(Unauthorized)
+def handle_unauthorized_error(exception_cause):
+    """
+    Catch unauthorized exceptions globally and respond with 401.
+
+    Args:
+        exception_cause: Cause
+
+    Returns:
+        Response
+    """
+    logging.exception(exception_cause)
+    return exception_cause.description, HTTPStatus.UNAUTHORIZED5
