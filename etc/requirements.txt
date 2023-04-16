@@ -1,11 +1,12 @@
+werkzeug==2.1.2
 alembic==1.8.1
 cryptography==36.0.1
+Flask==2.1.2
 flask-cors==3.0.10
 flask-migrate==3.1.0
 flask-restx==0.5.1
+SQLAlchemy==1.4.45
 flask-sqlalchemy==2.5.1
 psycopg2-binary==2.9.3
 pyjwt==2.3.0
 pytest
-requests-flask-adapter
-werkzeug==2.1.2

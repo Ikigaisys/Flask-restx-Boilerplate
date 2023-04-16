@@ -1,7 +1,8 @@
 import logging
+from http import HTTPStatus
+
 from flask import Blueprint
 from flask_restx import Api
-from http import HTTPStatus
 from werkzeug.exceptions import Unauthorized
 
 from .user.endpoints import api as user_api
@@ -27,6 +28,7 @@ api = Api(
 )
 
 api.add_namespace(user_api)
+
 
 @api.errorhandler(Unauthorized)
 def handle_unauthorized_error(exception_cause):

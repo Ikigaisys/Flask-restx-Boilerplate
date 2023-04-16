@@ -1,7 +1,7 @@
-from conf import settings
 from flask import g, request
-from werkzeug.exceptions import BadRequestKeyError, Forbidden, Unauthorized
+from werkzeug.exceptions import Unauthorized
 
+from conf import settings
 from model.user import User
 
 

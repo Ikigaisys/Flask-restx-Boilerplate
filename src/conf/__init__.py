@@ -23,6 +23,7 @@ class Settings:
             raise AttributeError(f"Can not modify settings")
         super().__setattr__(key, value)
 
+
 settings = None
 if not settings:
     settings = Settings()
