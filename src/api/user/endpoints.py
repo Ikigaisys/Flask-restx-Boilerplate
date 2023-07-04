@@ -2,7 +2,7 @@ from http import HTTPStatus
 from typing import Dict, Tuple
 
 from flask_restx import Resource
-
+from flask import g
 from api.user import schemas
 from helpers.api import auth
 from model.user import User
@@ -41,7 +41,7 @@ class UserList(Resource):
             List of users
         """
         api.logger.info("List users")
-        users = User.get()
+        users = User.list()
         return {"status": "ok", "data": users}, HTTPStatus.OK
 
 
@@ -71,6 +71,7 @@ class UserItem(Resource):
     def delete(self, user_id: int) -> Tuple[dict, int]:
         """
         Delete user
+        An authenticated user can delete any other user
 
         Returns:
             Failure or 204
@@ -80,5 +81,6 @@ class UserItem(Resource):
         if not user:
             response = {"status": "nok", "errors": ["User does not exist."]}
             return response, HTTPStatus.NOT_FOUND
+        print(g.user.email, " is deleting ", user.email)
         user.delete()
         return "", HTTPStatus.NO_CONTENT

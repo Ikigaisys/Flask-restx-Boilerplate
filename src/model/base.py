@@ -9,19 +9,16 @@ from sqlalchemy.ext.declarative import as_declarative, declared_attr
 
 db = SQLAlchemy(session_options={"autoflush": False})
 
+
 @as_declarative()
 class Base(object):
     __abstract__ = True
     id = Column(Integer, primary_key=True, autoincrement=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=True)
     updated_at = Column(
-        DateTime,
-        default=datetime.utcnow,
-        onupdate=datetime.utcnow,
-        nullable=True,
+        DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=True,
     )
 
- 
     @declared_attr
     def __tablename__(cls) -> str:
         """
@@ -31,7 +28,7 @@ class Base(object):
             Table name
         """
         return cls.__name__.lower()
-    
+
     def insert(self) -> Base:
         """
         Insert
@@ -83,9 +80,9 @@ class Base(object):
         return row
 
     @classmethod
-    def get(cls) -> Union[Base, None]:
+    def list(cls) -> Union[Base, None]:
         """
-        Get all rows
+        List all rows
 
         Args:
             session: Defaults to None.
