@@ -3,7 +3,7 @@ from typing import Union
 from sqlalchemy.sql.schema import Column
 from sqlalchemy.sql.sqltypes import Integer, String
 
-from model.base import Base, db
+from .base import Base, db
 
 
 class User(Base):

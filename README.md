@@ -19,7 +19,7 @@ It can be set to postgres or MySQL.
 ```bash
 {
     "env": "dev",
-    "sqlalchemy_database_uri": "sqlite:////absolute/path/to/project/test.db"
+    "database_uri": "sqlite:////absolute/path/to/project/test.db"
 }
 ```
 
@@ -27,9 +27,8 @@ It can be set to postgres or MySQL.
 To initialize the database, run the following [alembic](https://alembic.sqlalchemy.org/en/latest/tutorial.html#running-our-first-migration) command
 
 ```bash
-cd src/model
+alembic revision -m "init" --autogenerate
 alembic upgrade head
-cd ../..
 ```
 ## Run
 

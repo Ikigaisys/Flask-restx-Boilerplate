@@ -1,7 +1,7 @@
 from flask import g, request
 from werkzeug.exceptions import Unauthorized
 
-from conf import settings
+from config import settings
 from model.user import User
 
 

@@ -34,7 +34,7 @@ if not settings:
             settings.settings = configs
         settings.locked = True
     except FileNotFoundError:
-        print("Please create a settings.json file in src/etc/settings.json")
+        print("Please create a settings.json file in etc/settings.json")
         sys.exit()
     except json.decoder.JSONDecodeError:
         print("settings.json file not in a readable json format")

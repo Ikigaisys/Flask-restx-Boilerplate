@@ -6,7 +6,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 
 from api import blueprint
-from conf import settings
+from config import settings
 from model.base import db
 
 app = Flask(__name__, static_folder="../static")
@@ -15,7 +15,7 @@ app.app_context().push()
 logging.getLogger().setLevel(level=logging.INFO)
 logging.basicConfig(level=logging.INFO)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = settings.sqlalchemy_database_uri
+app.config["SQLALCHEMY_DATABASE_URI"] = settings.database_uri
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["CORS_HEADERS"] = "Content-Type"
 
