@@ -5,16 +5,11 @@ from typing import Union
 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, DateTime, Integer
-from sqlalchemy.ext import declarative
+from sqlalchemy.ext.declarative import as_declarative, declared_attr
 
 db = SQLAlchemy(session_options={"autoflush": False})
 
-
-def declarative_base(cls):
-    return declarative.declarative_base(cls=cls)
-
-
-@declarative_base
+@as_declarative()
 class Base(object):
     __abstract__ = True
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -26,6 +21,17 @@ class Base(object):
         nullable=True,
     )
 
+ 
+    @declared_attr
+    def __tablename__(cls) -> str:
+        """
+        Generate __tablename__ automatically
+
+        Returns:
+            Table name
+        """
+        return cls.__name__.lower()
+    
     def insert(self) -> Base:
         """
         Insert
