@@ -1,6 +1,6 @@
 # Flask-restx Boilerplate
 
-Boilerplate for a Flask-restx application
+Boilerplate for a Flask-restx application. It is similar to [FastAPI Boilerplate](https://github.com/Ikigaisys/FastAPI-Boilerplate).
 
 ## Installation
 
